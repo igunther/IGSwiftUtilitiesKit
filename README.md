@@ -1,5 +1,14 @@
 # IGSwiftUtilitiesKit
 
+<p>
+    <img src="https://img.shields.io/badge/iOS-14.0+-blue.svg" />
+    <img src="https://img.shields.io/badge/Swift-5.1-ff69b4.svg" />
+    <a href="https://twitter.com/igunthercom">
+        <img src="https://img.shields.io/badge/Contact-@igunthercom-lightgrey.svg?style=flat" alt="Twitter: @igunthercom" />
+    </a>
+</p>
+
+
 **IGSwiftUtilitiesKit** is a comprehensive toolkit designed to supercharge your iOS development workflow. Whether you're delving into the realms of UIKit or SwiftUI, this package is brimming with utility functions that streamline and enhance your coding process.
 
 ## 🌟 Features:
@@ -37,50 +46,50 @@ Install by pasting the GitHub repo URL in Xcode Package Manager, then follow the
 
 ### 1. Define your keys:
 
-\```swift
+```swift
 enum AppKeychainKeys: String, IGSwiftKeychainKey {
     case someSecret
     // Add more keys as needed
 }
-\```
+```
 
 ### 2. Initialize `IGSwiftKeychain`:
 
-\```swift
+```swift
 let keychain = IGSwiftKeychain<AppKeychainKeys>(service: "YourAppName")
-\```
+```
 
 ### 3. Basic Usage
 
 #### Save to Keychain:
 
-\```swift
+```swift
 do {
     try keychain.save("valueToSave", for: .someSecret)
 } catch {
     print("Failed to save to keychain:", error)
 }
-\```
+```
 
 #### Retrieve from Keychain:
 
-\```swift
+```swift
 do {
     let value = try keychain.get(.someSecret)
 } catch {
     print("Failed to retrieve from keychain:", error)
 }
-\```
+```
 
 #### Delete from Keychain:
 
-\```swift
+```swift
 do {
     try keychain.delete(.someSecret)
 } catch {
     print("Failed to delete from keychain:", error)
 }
-\```
+```
 
 ## Contributing
 
