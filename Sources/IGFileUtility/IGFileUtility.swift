@@ -10,6 +10,8 @@ import Foundation
 /// A utility class to provide convenient methods for common file operations.
 public class IGFileUtility: IGFileUtilityProtocol {
     
+    public init() {}
+    
     /// Returns the documents directory URL.
     private func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
