@@ -81,6 +81,18 @@ public struct IGKeychain<K: IGKeychainKey>: IGKeychainProtocol {
         }
     }
     
+    public func deleteAllKeys() throws {
+        let query = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: service
+        ] as [String: Any]
+        
+        let status = SecItemDelete(query as CFDictionary)
+        guard status == errSecSuccess || status == errSecItemNotFound else {
+            throw IGKeychainError.deleteError(status: status)
+        }
+    }
+    
 }
 
 

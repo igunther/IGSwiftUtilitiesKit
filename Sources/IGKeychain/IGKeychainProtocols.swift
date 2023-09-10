@@ -17,4 +17,5 @@ public protocol IGKeychainProtocol {
     func save(_ value: String, for key: Key) throws
     func get(for key: Key) throws -> String?
     func delete(for key: Key) throws
+    func deleteAllKeys() throws
 }
