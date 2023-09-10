@@ -28,9 +28,9 @@
 The essence of development lies in innovation and reusability. With **IGSwiftUtilitiesKit**, we centralize the recurrent tasks and patterns, chopping off the boilerplate, and giving you more time to innovate. Whether it's a fresh SwiftUI project or a mature UIKit application, embedding **IGSwiftUtilitiesKit** is your ticket to a smoother, more efficient development experience.
 
 
-# IGSwiftKeychain
+# IGKeychain
 
-IGSwiftKeychain is a Swift utility designed for a simplified and type-safe interaction with the iOS Keychain.
+IGKeychain is a Swift utility designed for a simplified and type-safe interaction with the iOS Keychain.
 
 ## Features
 
@@ -47,16 +47,16 @@ Install by pasting the GitHub repo URL in Xcode Package Manager, then follow the
 ### 1. Define your keys:
 
 ```swift
-enum AppKeychainKeys: String, IGSwiftKeychainKey {
+enum AppKeychainKeys: String, IGKeychainKey {
     case someSecret
     // Add more keys as needed
 }
 ```
 
-### 2. Initialize `IGSwiftKeychain`:
+### 2. Initialize `IGKeychain`:
 
 ```swift
-let keychain = IGSwiftKeychain<AppKeychainKeys>(service: "YourAppName")
+let keychain = IGKeychain<AppKeychainKeys>(service: "YourAppName")
 ```
 
 ### 3. Basic Usage

@@ -1,5 +1,5 @@
 //
-//  IGSwiftKeychainError.swift
+//  IGKeychainError.swift
 //  
 //
 //  Created by Øystein Günther on 08/09/2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum IGSwiftKeychainError: Error {
+public enum IGKeychainError: Error {
     case storeError(status: OSStatus)
     case retrieveError(status: OSStatus)
     case dataError

@@ -1,5 +1,5 @@
 //
-//  IGSwiftKeychain.swift
+//  IGKeychain.swift
 //  
 //
 //  Created by Øystein Günther on 08/09/2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct IGSwiftKeychain<K: IGSwiftKeychainKey>: IGSwiftKeychainProtocol {
+public struct IGKeychain<K: IGKeychainKey>: IGKeychainProtocol {
     public typealias Key = K
     
     public let service: String
@@ -38,7 +38,7 @@ public struct IGSwiftKeychain<K: IGSwiftKeychainKey>: IGSwiftKeychainProtocol {
         }
 
         guard status == errSecSuccess else {
-            throw IGSwiftKeychainError.storeError(status: status)
+            throw IGKeychainError.storeError(status: status)
         }
     }
     
@@ -57,12 +57,12 @@ public struct IGSwiftKeychain<K: IGSwiftKeychainKey>: IGSwiftKeychainProtocol {
             if status == errSecItemNotFound {
                 return nil
             } else {
-                throw IGSwiftKeychainError.retrieveError(status: status)
+                throw IGKeychainError.retrieveError(status: status)
             }
         }
         
         guard let data = item as? Data, let value = String(data: data, encoding: .utf8) else {
-            throw IGSwiftKeychainError.dataError
+            throw IGKeychainError.dataError
         }
         
         return value
@@ -77,7 +77,7 @@ public struct IGSwiftKeychain<K: IGSwiftKeychainKey>: IGSwiftKeychainProtocol {
         
         let status = SecItemDelete(query as CFDictionary)
         guard status == errSecSuccess || status == errSecItemNotFound else {
-            throw IGSwiftKeychainError.deleteError(status: status)
+            throw IGKeychainError.deleteError(status: status)
         }
     }
     

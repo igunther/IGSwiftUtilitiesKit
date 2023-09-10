@@ -8,7 +8,7 @@
 import Foundation
 
 /// A utility class to provide convenient methods for common file operations.
-public class IGFileUtility {
+public class IGFileUtility: IGFileUtilityProtocol {
     
     /// Returns the documents directory URL.
     private func getDocumentsDirectory() -> URL {
