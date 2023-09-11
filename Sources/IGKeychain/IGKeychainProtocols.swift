@@ -28,6 +28,7 @@ protocol IGKeychainManagerProtocol {
 
     /// A Combine subject that notifies about changes in the keychain.
     @available(macOS 10.15, *)
+    @available(iOS 13.0, *)
     var changesSubject: PassthroughSubject<(Key, String?), Never> { get }
 
     /// Retrieves a value from the keychain for a given key.
