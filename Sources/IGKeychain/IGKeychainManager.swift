@@ -11,7 +11,7 @@ import Combine
 /// A manager to interact with the keychain using a generic key type.
 @available(macOS 10.15, *)
 @available(iOS 13.0, *)
-public class IGKeychainManager<Key: IGKeychainKey>: IGKeychainManagerProtocol {
+open class IGKeychainManager<Key: IGKeychainKey>: IGKeychainManagerProtocol {
     
     /// The keychain utility to save, retrieve, or delete items.
     private var keychain: IGKeychain<Key>
