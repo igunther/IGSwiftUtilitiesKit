@@ -10,7 +10,8 @@ import Combine
 
 /// A manager to interact with the keychain using a generic key type.
 @available(macOS 10.15, *)
-public class KeychainManager<Key: IGKeychainKey>: IGKeychainManagerProtocol {
+@available(iOS 13.0, *)
+public class IGKeychainManager<Key: IGKeychainKey>: IGKeychainManagerProtocol {
     
     /// The keychain utility to save, retrieve, or delete items.
     private var keychain: IGKeychain<Key>
@@ -24,11 +25,11 @@ public class KeychainManager<Key: IGKeychainKey>: IGKeychainManagerProtocol {
         self.keychain = IGKeychain<Key>(service: service)
     }
     
-    /// Configures and returns an instance of the KeychainManager.
+    /// Configures and returns an instance of the IGKeychainManager.
     /// - Parameter service: The service name for the keychain.
     /// - Returns: An instance of the KeychainManager.
-    static public func configure(with service: String) -> KeychainManager<Key> {
-        return KeychainManager(service: service)
+    static public func configure(with service: String) -> IGKeychainManager<Key> {
+        return IGKeychainManager(service: service)
     }
     
     /// Retrieves a value from the keychain for a given key.
