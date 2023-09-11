@@ -35,19 +35,19 @@ open class IGKeychainManager<Key: IGKeychainKey>: IGKeychainManagerProtocol {
     /// Retrieves a value from the keychain for a given key.
     /// - Parameter key: The key to retrieve the value for.
     /// - Returns: The stored string value, or nil if not present.
-    public func getValue(for key: Key) -> String? {
-        return try? keychain.get(for: key)
+    public func getValue(for key: Key) throws -> String? {
+        return try keychain.get(for: key)
     }
     
     /// Sets (or deletes) a value in the keychain for a given key.
     /// - Parameters:
     ///   - value: The value to store, or nil to delete.
     ///   - key: The key to associate the value with.
-    public func setValue(_ value: String?, for key: Key) {
+    public func setValue(_ value: String?, for key: Key) throws {
         if let val = value {
-            try? keychain.save(val, for: key)
+            try keychain.save(val, for: key)
         } else {
-            try? keychain.delete(for: key)
+            try keychain.delete(for: key)
         }
         changesSubject.send((key, value))
     }
@@ -55,8 +55,8 @@ open class IGKeychainManager<Key: IGKeychainKey>: IGKeychainManagerProtocol {
     /// Deletes a given key.
     /// - Parameters:
     ///   - key: The key to associate the value with.
-    public func delete(for key: Key) {
-        try? keychain.delete(for: key)
+    public func delete(for key: Key) throws {
+        try keychain.delete(for: key)
     }
     
     /// Deletes all keys and their associated values from the keychain.

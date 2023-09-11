@@ -21,7 +21,7 @@ public protocol IGKeychainProtocol {
     func deleteAllKeys() throws
 }
 
-/// Protocol that outlines the required methods and properties for a keychain manager.
+/// Protocol that outlines the required methods and properties for the keychain manager.
 protocol IGKeychainManagerProtocol {
     
     associatedtype Key: IGKeychainKey
@@ -34,18 +34,18 @@ protocol IGKeychainManagerProtocol {
     /// Retrieves a value from the keychain for a given key.
     /// - Parameter key: The key to retrieve the value for.
     /// - Returns: The stored string value, or nil if not present.
-    func getValue(for key: Key) -> String?
+    func getValue(for key: Key) throws -> String?
 
     /// Sets (or deletes) a value in the keychain for a given key.
     /// - Parameters:
     ///   - value: The value to store, or nil to delete.
     ///   - key: The key to associate the value with.
-    func setValue(_ value: String?, for key: Key)
+    func setValue(_ value: String?, for key: Key) throws
     
     /// Deletes a given key.
     /// - Parameters:
     ///   - key: The key to associate the value with.
-    func delete(for key: Key)
+    func delete(for key: Key) throws
 
     /// Deletes all keys and their associated values from the keychain.
     /// - Throws: An error if the deletion process fails.
