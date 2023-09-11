@@ -52,6 +52,13 @@ open class IGKeychainManager<Key: IGKeychainKey>: IGKeychainManagerProtocol {
         changesSubject.send((key, value))
     }
     
+    /// Deletes a given key.
+    /// - Parameters:
+    ///   - key: The key to associate the value with.
+    public func delete(for key: Key) {
+        try? keychain.delete(for: key)
+    }
+    
     /// Deletes all keys and their associated values from the keychain.
     /// - Throws: An error if the deletion process fails.
     public func deleteAllKeys() throws {

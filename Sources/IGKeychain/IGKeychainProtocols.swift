@@ -41,6 +41,11 @@ protocol IGKeychainManagerProtocol {
     ///   - value: The value to store, or nil to delete.
     ///   - key: The key to associate the value with.
     func setValue(_ value: String?, for key: Key)
+    
+    /// Deletes a given key.
+    /// - Parameters:
+    ///   - key: The key to associate the value with.
+    func delete(for key: Key)
 
     /// Deletes all keys and their associated values from the keychain.
     /// - Throws: An error if the deletion process fails.
