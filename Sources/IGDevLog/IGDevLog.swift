@@ -55,10 +55,16 @@ final public class IGDevLog: IGDevLogProtocol {
     /// A flag that determines whether logging is enabled or not.
     private var isLoggingEnabled: Bool
     
+    /// A flag that determines wheter to include the 'IGDevLog' name in the log output.
+    /// This can be useful when debugging in Xcode. Specifying 'IGDevLog' as a Filter
+    /// in the debug area, will effectively filter out any other clutter.
+    private var includeSelfClassName: Bool
+    
     /// Private initializer to ensure the IGDevLog is only instantiated through the shared instance.
-    private init(dateFormat: String = "HH:mm:ss.SSS", loggingEnabled: Bool = true) {
+    private init(dateFormat: String = "HH:mm:ss.SSS", loggingEnabled: Bool = true, includeSelfClassName: Bool = false) {
         self.dateFormat = dateFormat
         self.isLoggingEnabled = loggingEnabled
+        self.includeSelfClassName = includeSelfClassName
     }
     
     /// Configuration function to set up the logger.
@@ -95,7 +101,9 @@ final public class IGDevLog: IGDevLogProtocol {
     private func log(_ object: Any, eventType: IGDevLogEvent, filename: String, line: Int, column: Int, funcName: String) {
         if isLoggingEnabled {
             let date = Date().toString(using: dateFormatter)
-            devPrint("\(date) \(eventType.rawValue) \(sourceFileName(filePath: filename)):\(line) \(column) \(funcName) -> \(object)")
+            let className = String(describing: type(of: self)) + " ::"
+            let prefix = includeSelfClassName ? className : ""
+            devPrint("\(prefix) \(date) \(eventType.rawValue) \(sourceFileName(filePath: filename)):\(line) \(column) \(funcName) -> \(object)")
         }
     }
     
