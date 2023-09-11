@@ -17,7 +17,7 @@ open class IGKeychainManager<Key: IGKeychainKey>: IGKeychainManagerProtocol {
     private var keychain: IGKeychain<Key>
     
     /// A Combine subject to notify about changes in the keychain.
-    let changesSubject = PassthroughSubject<(Key, String?), Never>()
+    public let changesSubject = PassthroughSubject<(Key, String?), Never>()
 
     /// Private initializer to ensure the KeychainManager is only instantiated using the `configure` method.
     /// - Parameter service: The service name for the keychain. Used to differentiate between different keychain items.
