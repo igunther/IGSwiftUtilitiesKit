@@ -68,9 +68,10 @@ final public class IGDevLog: IGDevLogProtocol {
     }
     
     /// Configuration function to set up the logger.
-    public static func configure(dateFormat: String = "HH:mm:ss.SSS", loggingEnabled: Bool = true) {
+    public static func configure(dateFormat: String = "HH:mm:ss.SSS", loggingEnabled: Bool = true, includeSelfClassName: Bool = false) {
         shared.dateFormat = dateFormat
         shared.isLoggingEnabled = loggingEnabled
+        shared.includeSelfClassName = includeSelfClassName
     }
     
     public func verbose(_ object: Any, filename: String = #file, line: Int = #line, column: Int = #column, funcName: String = #function) {
