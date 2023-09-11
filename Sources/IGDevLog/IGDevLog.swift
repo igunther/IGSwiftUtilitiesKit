@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 /// Custom function wrapping Swift.print() to avoid confusion with Swift's built-in print.
 /// This might prevent some security vulnerabilities.
 /// - Parameter object: The object to be logged.
@@ -27,7 +25,7 @@ public protocol IGDevLogProtocol {
 }
 
 /// A logging class that provides different levels of logging with contextual information.
-public class IGDevLog: IGDevLogProtocol {
+final public class IGDevLog: IGDevLogProtocol {
     
     /// Enum representing different log event types. Each type is associated with a specific emoji for visual identification.
     enum IGDevLogEvent: String {
@@ -40,7 +38,7 @@ public class IGDevLog: IGDevLogProtocol {
     }
     
     /// Singleton instance for the logger. Ensures that the logger can be accessed throughout the application.
-    private static let shared = IGDevLog()
+    public static var shared = IGDevLog()
     
     /// DateFormatter to format the date in logs.
     private var dateFormatter: DateFormatter {
