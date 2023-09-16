@@ -52,12 +52,12 @@ protocol KeychainKey: RawRepresentable where RawValue == String {}
 open class IGBaseKeychainManager<Key: IGKeychainKey> {
     
     /// Internal instance of `IGKeychainManager` configured with the specified service.
-    internal let iGKeychainManager: IGKeychainManager<Key>
+    public let iGKeychainManager: IGKeychainManager<Key>
     
     /// Collection of cancellables to manage Combine subscriptions.
-    internal var cancellables = Set<AnyCancellable>()
+    public var cancellables = Set<AnyCancellable>()
 
-    /// Initializer to configure the manager with a specific service.
+    /// Initialipubliczer to configure the manager with a specific service.
     /// - Parameter service: The service name to configure the keychain manager.
     required public init(with service: String) {
         iGKeychainManager = IGKeychainManager<Key>.configure(with: service)
