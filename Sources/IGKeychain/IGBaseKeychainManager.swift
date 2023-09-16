@@ -48,7 +48,8 @@ protocol KeychainKey: RawRepresentable where RawValue == String {}
  */
 /// A base class to manage keychain operations.
 @available(macOS 10.15, *)
-public class IGBaseKeychainManager<Key: IGKeychainKey> {
+@available(iOS 13.0, *)
+open class IGBaseKeychainManager<Key: IGKeychainKey> {
     
     /// Internal instance of `IGKeychainManager` configured with the specified service.
     internal let iGKeychainManager: IGKeychainManager<Key>
@@ -58,7 +59,7 @@ public class IGBaseKeychainManager<Key: IGKeychainKey> {
 
     /// Initializer to configure the manager with a specific service.
     /// - Parameter service: The service name to configure the keychain manager.
-    required internal init(with service: String) {
+    required public init(with service: String) {
         iGKeychainManager = IGKeychainManager<Key>.configure(with: service)
     }
 
