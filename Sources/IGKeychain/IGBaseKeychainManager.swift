@@ -64,14 +64,14 @@ open class IGBaseKeychainManager<Key: IGKeychainKey> {
     }
 
     /// Deletes all keys from the keychain.
-    internal func deleteAllKeys() throws {
+    public func deleteAllKeys() throws {
         try iGKeychainManager.deleteAllKeys()
     }
 
     /// Subscript for easier interaction with the keychain.
     /// Allows reading and writing values for specific keys.
     /// - Parameter key: The key for the value in the keychain.
-    internal subscript(key: Key) -> String? {
+    public subscript(key: Key) -> String? {
         get {
             do {
                 return try iGKeychainManager.getValue(for: key)
